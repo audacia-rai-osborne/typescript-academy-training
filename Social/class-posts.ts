@@ -88,26 +88,21 @@ export class posts implements iposts{
             for (let i=0; i<postList.length; i++){
             console.log("Post id: " + postList[i].id + " User: " + postList[i].username + " Posted - " + postList[i].content)
             }
-            var response = question("What would you like to do? Bookmark, Unbookmark, Like, Unlike a post");
-            enum questionAnswer{
-                Bookmark,
-                Unbookmark,
-                Like,
-                Unlike,
-            }
-            switch(response){
-                case questionAnswer.Bookmark:
+            var response = question("What would you like to do? 1 - Bookmark 2 - Unbookmark 3 - Like 4 - Unlike a post ");
+            
+            if (response === "1"){
                 this.bookmarkAPost()
-                break;
-                case response.2:
-                this.likeAPost()
-                default:
-                break;
+            }else if (response === "2"){
+                this.unbookmarkAPost()
+            }
+            else if (response === "3"){
+                this.likeAPost() 
+            }else if (response === "4"){
+                this.unlikeAPost()
             }
         }
+        
         bookmarkAPost(){
-            var response = question("Would you like to bookmark a post? y/n ")
-            if (response === 'y'){
                 var bookmarkedPost = parseInt(question("What is the id of the post you'd like to bookmark? "))
                 let newBookmark: BookmarkedPosts = new BookmarkedPosts(postList[bookmarkedPost-1].content, date, postList[bookmarkedPost-1].username, postList[bookmarkedPost-1].userId, postList[bookmarkedPost-1].id)
                     newBookmark.bookmarked = true
@@ -116,9 +111,8 @@ export class posts implements iposts{
                     newBookmark.bookmarkedByWho = trackingUsersBookmarks
                     postsBookmarked.push(newBookmark)
                     console.log(postsBookmarked)
-            }else if(response === 'n'){
-                 var response = question("Would you like to unbookmark a post? y/n ")
-                 if (response === 'y'){
+        }
+           unbookmarkAPost(){
                      var unbookmarkedPost = parseInt(question("What is the id of the post you'd like to unbookmark? "))
                      var usersId = question("What is your user id? ")
                       for (let i=0; i<postsBookmarked.length; i++){
@@ -132,19 +126,14 @@ export class posts implements iposts{
                                 else{
                                     continue;
                                 }
-                                }
                             }
-
                         }
-                      }
-                 }else if(response === 'n'){
-                     this.likeAPost()
-                 }
-             }
-        }
+                    }
+                }
+            }
+        
+    
         likeAPost(){
-            var response = question("Would you like to like a post? y/n ")
-            if (response === 'y'){
                 var likedPost = parseInt(question("What is the id of the post you'd like to like? "))
                 let newLike: LikedPosts = new LikedPosts(postList[likedPost-1].content, date, postList[likedPost-1].username, postList[likedPost-1].userId, postList[likedPost-1].id)
                     newLike.liked = true
@@ -153,9 +142,9 @@ export class posts implements iposts{
                     newLike.likedByWho = trackingUsersLikes
                     postsLiked.push(newLike)
                     console.log(postsBookmarked)
-            }else if(response === 'n'){
-                 var response = question("Would you like to unlike a post? y/n ")
-                 if (response === 'y'){
+            }
+
+            unlikeAPost(){
                      var unliked = parseInt(question("What is the id of the post you'd like to unlike? "))
                      var usersId = question("What is your user id? ")
                      for (let i=0; i<postsLiked.length; i++){
@@ -169,17 +158,11 @@ export class posts implements iposts{
                                else{
                                    continue;
                                }
-                               }
-                           }
-
-                       }
-                     }
-                 }else if(response === 'n'){
-                     mainScreen()
+                            }
+                        }
+                    }
                 }
-             }
-
-        }
+            }
 
         myBookmarkedPosts(){
             var userId = question("What is your username? ")
