@@ -10,7 +10,7 @@ export interface iUser{
     firstName:string;
     lastName:string;
     username:string;
-    eyeColor:number;
+    eyeColor:string;
     birthDay:string;
     createdAt:Date;
     profile_photo_id:number;
@@ -18,7 +18,7 @@ export interface iUser{
 
     //function
     createBirthDate(birthDay:string): string;
-    findEyeColor(eyeColor:string): number;
+    findEyeColor(eyeColor:string): string;
 
 }
 
@@ -28,7 +28,7 @@ export class User implements iUser{
     firstName:string;
     lastName:string;
     username:string;
-    eyeColor:number;
+    eyeColor:string;
     birthDay:string;
     createdAt:Date;
     profile_photo_id:number;
@@ -159,7 +159,7 @@ export class User implements iUser{
                 }
             }}}
 
-    findEyeColor(eyeColor:string):number{
+    findEyeColor(eyeColor:string):string{
         enum EyeColor{
             Hazel,
             Blue,
@@ -170,17 +170,17 @@ export class User implements iUser{
         }
     
         if(eyeColor === 'Hazel'){
-            return EyeColor.Hazel
+            return EyeColor[0]
         }else if(eyeColor === 'Blue'){
-            return EyeColor.Blue
+            return EyeColor[1]
         }else if(eyeColor === ' Green'){
-        return EyeColor.Green
+        return EyeColor[2]
         }else if(eyeColor === 'Amber'){
-        return EyeColor.Amber
+        return EyeColor[3]
     }else if(eyeColor === 'Grey'){
-        return EyeColor.Grey
+        return EyeColor[4]
     }else{
-        return EyeColor.Brown
+        return EyeColor[5]
     }
 
 }
