@@ -68,7 +68,7 @@ export class User implements iUser{
                 console.log("Name: " + users[i].firstName + " " + users[i].lastName);
                 console.log("Username: " + users[i].username);
                 console.log("Birthday: " + users[i].birthDay);
-                //console.log("Eye Color: " + EyeColor.users[i].eyeColor);
+                console.log("Eye Color: " + users[i].eyeColor);
             }
         var returnAnswer = question("Would you like to search for another user?" + (" y/n "))
             if (returnAnswer === 'y'){
