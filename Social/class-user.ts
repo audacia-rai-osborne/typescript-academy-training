@@ -168,6 +168,7 @@ export class User implements iUser{
             Grey,
             Brown
         }
+    
         if(eyeColor === 'Hazel'){
             return EyeColor.Hazel
         }else if(eyeColor === 'Blue'){
