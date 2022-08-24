@@ -15,6 +15,7 @@ export interface iUser{
     createdAt:Date;
     profile_photo_id:number;
     background_photo_id:number;
+    //postList: posts[];
 
     //function
     createBirthDate(birthDay:string): string;
@@ -33,7 +34,7 @@ export class User implements iUser{
     createdAt:Date;
     profile_photo_id:number;
     background_photo_id:number;
-    userpost: any;
+    //postList: posts[];
 
     //constructor
     constructor(id:number, firstName:string, lastName:string, username:string, eyeColor:string, birthDay:string, createdAt:Date, profile_photo_id:number, background_photo_id:number){
@@ -185,3 +186,5 @@ export class User implements iUser{
 
 }
 }
+
+

@@ -1,6 +1,6 @@
 import { question } from "readline-sync";
 import { Chats } from "./class-chats";
-import { postList, posts } from "./class-posts";
+import { posts, postList } from "./class-posts";
 import { Replies } from "./class-replies";
 import { User, users } from "./class-user";
 
@@ -20,6 +20,10 @@ function createUser(){
     
     createdUser = new User (users.length+1, firstName, lastName, username, eyeColor, birthDay, date, users.length+1, users.length+1);
     users.push(createdUser)
+    let practiceJSON:string = JSON.stringify(createdUser)
+    console.log(practiceJSON)
+    let reverseJSON = JSON.parse(practiceJSON)
+    console.log(reverseJSON)
     var returnAnswer = question("Would you like to add another user?" + (" y/n "))
     if (returnAnswer === 'y'){
         createUser()
@@ -112,4 +116,5 @@ export function chatScreen(){
 
 }
 mainScreen()
+
 
