@@ -8,26 +8,20 @@ let fileData = data.toJSON();
 let readableData = data.toString("utf8")
 let finalData = JSON.parse(readableData)
 
-//console.log(finalData.HomeMenu)
+console.log(finalData)
 
-let createdMenu: mainMenu;
-class mainMenu{
-    questionOne:string;
-    questionTwo:string;
-    questionThree: string;
 
-    constructor(questionOne:string, questionTwo:string, questionThree:string){
-        this.questionOne = questionOne
-        this.questionTwo = questionTwo
-        this.questionThree = questionThree
+let createdMenu: menu;
+class menu{
+    HomeMenu: string[];
+
+    constructor(HomeMenu){
+        this.HomeMenu = HomeMenu
     }
 }
 
-createdMenu = new mainMenu(finalData.HomeMenu[0], finalData.HomeMenu[1], finalData.HomeMenu[2])
 
-console.log(createdMenu.questionOne)
-console.log(createdMenu.questionTwo)
-console.log(createdMenu.questionTwo)
+//want to parse string array into example class
 
-// iterate through finalData.HomeMenu to fill createdMenu
-// iterate through createdMenu to console.log questions
+
+//fields on a class and keys need to be the same because that's how it maps together
