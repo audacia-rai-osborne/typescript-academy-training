@@ -5,6 +5,14 @@ import { posts, postList } from "./class-posts";
 import { Replies } from "./class-replies";
 import { User, users } from "./class-user";
 
+import * as fs from 'fs';
+
+let userData = fs.readFileSync('./user-storage.json');
+let fileUser = userData.toJSON();
+
+let readableUser = userData.toString("utf8")
+let finalUserData: User = JSON.parse(readableUser)
+
 let createdUser: User;
 let createdPost: posts;
 let newChat: Chats;

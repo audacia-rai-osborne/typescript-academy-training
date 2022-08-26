@@ -1,0 +1,11 @@
+{
+    "id" : null,
+    "firstName" : null,
+    "lastName":null,
+    "username":null,
+    "eyeColor":null,
+    "birthDay":null,
+    "createdAt":null,
+    "profile_photo_id":null,
+    "background_photo_id":null
+}
