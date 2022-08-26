@@ -6,9 +6,9 @@ let data = fs.readFileSync('./appsettings-JSON-for-later.json');
 let fileData = data.toJSON();
 
 let readableData = data.toString("utf8")
-let finalData: menu = JSON.parse(readableData)
+export let finalData: menu = JSON.parse(readableData)
 
-let allMenus: menu;
+//let allMenus: menu;
 class menu{
     HomeMenu: string[] =[]
     UserMenu: string[] =[]
@@ -16,3 +16,4 @@ class menu{
     ChatMenu: string[] =[]
 }
 
+//console.log(finalData.HomeMenu)

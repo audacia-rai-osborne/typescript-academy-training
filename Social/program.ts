@@ -1,4 +1,5 @@
 import { question } from "readline-sync";
+import { finalData } from "./appsettingforAllMenu";
 import { Chats } from "./class-chats";
 import { posts, postList } from "./class-posts";
 import { Replies } from "./class-replies";
@@ -70,25 +71,19 @@ function continueChat(chatMaker: string, chatId: string) {
 }
 
 export function mainScreen() {
-    var response = question("What would you like to do?" + " 1 - Create User " + " 2 - Output User " + " 3 - Delete User " + " 4 - Update User " + " 5 - Posts " + " 6 - Chat ");
-    if (response === '1') {
-        createUser()
-    }
+    var response = question(console.log(finalData.HomeMenu));
+     if (response === '1') {
+        console.log(finalData.UserMenu)
+     }
     else if (response === '2') {
-        createdUser.outputUser()
-    } else if (response === '3') {
-        createdUser.deleteUser()
-    } else if (response == '4') {
-        createdUser.updateUser()
-    } else if (response == '5') {
         postScreen()
-    } else if (response == '6') {
+    } else if (response === '3') {
         chatScreen()
     }
 }
 
 export function postScreen() {
-    var response = question("What would you like to do?" + " 1 - Create Posts " + " 2 - See all my posts " + " 3 - See all posts " + " 4 - See my bookmarked posts " + "5 - See my liked posts " + " 6 - Return to main screen ");
+    var response = question(console.log(finalData.PostsMenu))
     if (response === '1') {
         createPost(date)
     } else if (response === '2') {
@@ -106,7 +101,7 @@ export function postScreen() {
 }
 
 export function chatScreen() {
-    var response = question("What would you like to do?" + " 1 - New chat " + " 2 - See old chat " + " 3 - Return to main screen ");
+    var response = question(console.log(finalData.ChatMenu));
     if (response === '1') {
         createChat()
     } else if (response === '2') {
