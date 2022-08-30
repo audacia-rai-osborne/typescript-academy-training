@@ -1,11 +1,37 @@
 {
-    "id" : null,
-    "firstName" : null,
-    "lastName":null,
-    "username":null,
-    "eyeColor":null,
-    "birthDay":null,
-    "createdAt":null,
-    "profile_photo_id":null,
-    "background_photo_id":null
+
+    "User1":{
+        "id" : 1,
+        "firstName" : "Rai",
+        "lastName":"Osborne",
+        "username":"RaiO",
+        "eyeColor":"Hazel",
+        "birthDay":"2001-02-07",
+        "createdAt":"2022-08-30",
+        "profile_photo_id":1,
+        "background_photo_id":1
+    },
+    "User2":{
+        "id" : 2,
+        "firstName" : "Jazz",
+        "lastName":"West",
+        "username":"JazzW",
+        "eyeColor":"Brown",
+        "birthDay":"2001-03-15",
+        "createdAt":"2022-08-30",
+        "profile_photo_id":2,
+        "background_photo_id":2
+    },
+    "User3":{
+        "id" : 3,
+        "firstName" : "Diego",
+        "lastName":"West",
+        "username":"DiegoW",
+        "eyeColor":"Brown",
+        "birthDay":"2021-08-22",
+        "createdAt":"2022-08-30",
+        "profile_photo_id":3,
+        "background_photo_id":3
+    }
 }
+

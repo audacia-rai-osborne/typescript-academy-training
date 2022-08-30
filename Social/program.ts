@@ -11,7 +11,7 @@ let userData = fs.readFileSync('./user-storage.json');
 let fileUser = userData.toJSON();
 
 let readableUser = userData.toString("utf8")
-let finalUserData: User = JSON.parse(readableUser)
+let finalUser: User = JSON.parse(readableUser)
 
 let createdUser: User;
 let createdPost: posts;
@@ -19,6 +19,13 @@ let newChat: Chats;
 let chatList: Chats[] = [];
 export let replyList: Replies[] = []
 export let date: Date = new Date();
+
+function initaliseUsers(){
+    users.push(finalUser)
+    console.log("users initialised")
+    console.log(users[1])
+    mainScreen()
+}
 
 function createUser() {
     var firstName = question("What is your first name? ");
@@ -29,10 +36,6 @@ function createUser() {
 
     createdUser = new User(users.length + 1, firstName, lastName, username, eyeColor, birthDay, date, users.length + 1, users.length + 1);
     users.push(createdUser)
-    let practiceJSON: string = JSON.stringify(createdUser)
-    console.log(practiceJSON)
-    let reverseJSON = JSON.parse(practiceJSON)
-    console.log(reverseJSON)
     var returnAnswer = question("Would you like to add another user?" + (" y/n "))
     if (returnAnswer === 'y') {
         createUser()
@@ -81,12 +84,23 @@ function continueChat(chatMaker: string, chatId: string) {
 export function mainScreen() {
     var response = question(console.log(finalData.HomeMenu));
      if (response === '1') {
-        console.log(finalData.UserMenu)
+        var response = question(console.log(finalData.UserMenu))
+        if (response === '1'){
+            createUser()
+        }else if (response === '2'){
+            createdUser.outputUser()
+        }else if(response === '3'){
+            createdUser.updateUser()
+        }else if(response === '4'){
+            createdUser.deleteUser()
+        }
      }
     else if (response === '2') {
         postScreen()
     } else if (response === '3') {
         chatScreen()
+    }else if (response === '4'){
+        initaliseUsers()
     }
 }
 
@@ -120,5 +134,6 @@ export function chatScreen() {
 
 }
 mainScreen()
+
 
 
