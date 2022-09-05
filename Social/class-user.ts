@@ -1,6 +1,7 @@
+import { defaultMaxListeners } from "events";
 import { question } from "readline-sync";
 import { posts } from "./class-posts";
-import { mainScreen } from "./program";
+import { finalUser, mainScreen, usersToJson } from "./program";
 export let users: User[] = [];
 //export let createdUser: User; 
 
@@ -60,9 +61,6 @@ export class User implements iUser{
 
     outputUser(){
         var userSearch:string = question ("What is the username of the user you would like to search for? ")
-        //try and find index of user with given username
-        //its full of the class users so usersearch cannot be searched as its a subset of the class that is actually being stored in the array
-        //tuples??
         for (let i=0; i<users.length; i++){
             if(users[i].username === userSearch){
                 console.log("User details -  ");
@@ -89,7 +87,8 @@ export class User implements iUser{
         }
             users.splice(userDeleteIndex,1)
             console.log("User - " + userDelete + " has been deleted")
-            //console.log(users[0])
+            usersToJson(users)
+            //console.log(users)
             }
         var returnAnswer = question("Would you like to delete another user?" + (" y/n "))
             if (returnAnswer === 'y'){
@@ -108,6 +107,7 @@ export class User implements iUser{
                     while(users[i].username == userUpdate){
                     users[i].firstName = firstNameUpdate;
                     console.log("User - " + userUpdate + " has been updated")
+                    usersToJson(users)
                     break;
                 }
                 var returnAnswer = question("Would you like to update another user?" + (" y/n "))
@@ -122,6 +122,7 @@ export class User implements iUser{
                     while(users[i].username == userUpdate){
                         users[i].lastName = lastNameUpdate;
                         console.log("User - " + userUpdate + " has been updated")
+                        usersToJson(users)
                         break;
                 }
                 var returnAnswer = question("Would you like to update another user?" + (" y/n "))
@@ -150,6 +151,7 @@ export class User implements iUser{
                     while(users[i].username == userUpdate){
                         users[i].birthDay = this.createBirthDate(birthDateUpdate);
                         console.log("User - " + userUpdate + " has been updated")
+                        usersToJson(users)
                         break;
                 }
                 var returnAnswer = question("Would you like to update another user?" + (" y/n "))

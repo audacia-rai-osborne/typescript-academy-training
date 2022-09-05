@@ -11,7 +11,7 @@ let userData = fs.readFileSync('./user-storage.json');
 let fileUser = userData.toJSON();
 
 let readableUser = userData.toString("utf8")
-let finalUser: User = JSON.parse(readableUser)
+export let finalUser = JSON.parse(readableUser)
 
 let createdUser: User;
 let createdPost: posts;
@@ -21,11 +21,14 @@ export let replyList: Replies[] = []
 export let date: Date = new Date();
 
 function initaliseUsers(){
-    users.push(finalUser)
-    console.log("users initialised")
-    console.log(users[1])
-    mainScreen()
+    for(let i=0; i < finalUser.Users.length; i++){
+        createdUser = new User(users.length + 1, finalUser.Users[i]['firstName'], finalUser.Users[i]['lastName'], finalUser.Users[i]['username'], finalUser.Users[i]['eyeColor'], finalUser.Users[i]['birthDay'], date, users.length + 1, users.length + 1);
+        //createdUser = finalUser.Users[i]
+        users.push(createdUser)
+    }
 }
+
+
 
 function createUser() {
     var firstName = question("What is your first name? ");
@@ -36,13 +39,30 @@ function createUser() {
 
     createdUser = new User(users.length + 1, firstName, lastName, username, eyeColor, birthDay, date, users.length + 1, users.length + 1);
     users.push(createdUser)
-    var returnAnswer = question("Would you like to add another user?" + (" y/n "))
-    if (returnAnswer === 'y') {
-        createUser()
-    } else if (returnAnswer === 'n') {
-        mainScreen()
-    }
+    mainScreen()
+    //usersToJson(users)
 }
+
+ export function usersToJson(users: User[]){
+    console.log(users)
+    let fs: any = require('fs')
+    let returnedUser = JSON.stringify(users, null, 2)
+    //console.log(returnedUser)
+    try{
+    fs.writeFileSync('./user-storage.json', returnedUser);
+    console.log('Successfully wrote file')
+        mainScreen()
+    } catch(error) {
+        console.log('Error writing file')
+        console.log('Please try again')
+        createUser()
+    }
+    mainScreen()
+ }
+ 
+
+
+ //not getting to fs.writeFile, just kinda getting stuck before there/skipping straight over
 
 function createPost(dateCreated: Date) {
     //how to get userid from username //do we actually want this in post? probably
@@ -133,7 +153,10 @@ export function chatScreen() {
     }
 
 }
+initaliseUsers()
 mainScreen()
+//console.log(arrayUser)
+
 
 
 
