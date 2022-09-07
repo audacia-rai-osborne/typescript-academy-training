@@ -1,7 +1,7 @@
 import { defaultMaxListeners } from "events";
 import { question } from "readline-sync";
 import { posts } from "./class-posts";
-import { finalUser, mainScreen, usersToJson } from "./program";
+import { finalUser, getObjects, mainScreen, usersToJson } from "./program";
 export let users: User[] = [];
 //export let createdUser: User; 
 
@@ -87,7 +87,8 @@ export class User implements iUser{
         }
             users.splice(userDeleteIndex,1)
             console.log("User - " + userDelete + " has been deleted")
-            usersToJson(users)
+            //usersToJson(users)
+            // updateJson(users)
             //console.log(users)
             }
         var returnAnswer = question("Would you like to delete another user?" + (" y/n "))
@@ -102,12 +103,14 @@ export class User implements iUser{
             var userUpdate = question("What user would you like to update?");
             var updatedInfo = question("What information would you like to change?" + " 1 - First Name " + " 2 - Last Name " + " 3 - Username " + " 4 - Birthday ");
             if (updatedInfo === '1'){
+                var currentFirstName = question("What is the users current first name?")
                 var firstNameUpdate = question("What is the new first name? ");
                 for (let i=0; i<users.length; i++){
                     while(users[i].username == userUpdate){
                     users[i].firstName = firstNameUpdate;
                     console.log("User - " + userUpdate + " has been updated")
-                    usersToJson(users)
+                    getObjects(User, this.firstName, userUpdate, currentFirstName)
+                    // usersToJson(users)
                     break;
                 }
                 var returnAnswer = question("Would you like to update another user?" + (" y/n "))
@@ -122,7 +125,7 @@ export class User implements iUser{
                     while(users[i].username == userUpdate){
                         users[i].lastName = lastNameUpdate;
                         console.log("User - " + userUpdate + " has been updated")
-                        usersToJson(users)
+                        // usersToJson(users)
                         break;
                 }
                 var returnAnswer = question("Would you like to update another user?" + (" y/n "))
@@ -151,7 +154,7 @@ export class User implements iUser{
                     while(users[i].username == userUpdate){
                         users[i].birthDay = this.createBirthDate(birthDateUpdate);
                         console.log("User - " + userUpdate + " has been updated")
-                        usersToJson(users)
+                        // usersToJson(users)
                         break;
                 }
                 var returnAnswer = question("Would you like to update another user?" + (" y/n "))

@@ -28,8 +28,6 @@ function initaliseUsers(){
     }
 }
 
-
-
 function createUser() {
     var firstName = question("What is your first name? ");
     var lastName = question("What is your last name? ");
@@ -40,7 +38,7 @@ function createUser() {
     createdUser = new User(users.length + 1, firstName, lastName, username, eyeColor, birthDay, date, users.length + 1, users.length + 1);
     users.push(createdUser)
     mainScreen()
-    //usersToJson(users)
+    usersToJson(users)
 }
 
  export function usersToJson(users: User[]){
@@ -57,12 +55,8 @@ function createUser() {
         console.log('Please try again')
         createUser()
     }
-    mainScreen()
  }
- 
 
-
- //not getting to fs.writeFile, just kinda getting stuck before there/skipping straight over
 
 function createPost(dateCreated: Date) {
     //how to get userid from username //do we actually want this in post? probably
@@ -153,9 +147,51 @@ export function chatScreen() {
     }
 
 }
+
+// function updateJson(obj, key, val, newVal) {
+//     var newValue = newVal;
+//     var objects = [];
+//     for (var i in obj) {
+//         if (!obj.hasOwnProperty(i)) continue;
+//         if (typeof obj[i] == 'object') {
+//             objects = objects.concat(updateJson(obj[i], key, val, newValue));
+//         } else if (i == key && obj[key] == val) {
+//             obj[key] = 'qwe';
+//         }
+//     }
+//     return obj;
+// }
+
+// what to put the types as?? string and any don't work but that's what they are??
+export function getObjects(obj: object, key, val, newVal) {
+    for (var i in obj) {
+        if (!obj.hasOwnProperty(i)) continue;
+        if (i == key && obj[key] == val) {
+            obj[key] = newVal;
+        }
+    }
+    return obj
+  }
+
+// export function updateJson(username: string, newFirstName: string){
+// for (var i = 0; i < finalUser.Users.length; i++) {
+//     if (finalUser.Users[i].username === username) {
+//       finalUser.Users[i].firstName = newFirstName;
+//       break;
+//     }
+//   }
+// }
+
+// export function updateJson(users: User[]){
+//     fs.readFileSync('./user-storage-test.json');{
+//         fs.writeFile("./user-storage-test.json", JSON.stringify(users), err => {
+//     if (err) console.log("Error writing file:", err);
+//   })
+// }};
+
+ 
 initaliseUsers()
 mainScreen()
-//console.log(arrayUser)
 
 
 
