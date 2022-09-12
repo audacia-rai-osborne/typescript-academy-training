@@ -37,17 +37,16 @@ function createUser() {
 
     createdUser = new User(users.length + 1, firstName, lastName, username, eyeColor, birthDay, date, users.length + 1, users.length + 1);
     users.push(createdUser)
-    mainScreen()
     usersToJson(users)
+    mainScreen()
 }
 
  export function usersToJson(users: User[]){
-    console.log(users)
     let fs: any = require('fs')
     let returnedUser = JSON.stringify(users, null, 2)
     //console.log(returnedUser)
     try{
-    fs.writeFileSync('./user-storage.json', returnedUser);
+    fs.writeFileSync('./user-storage-test.json', returnedUser);
     console.log('Successfully wrote file')
         mainScreen()
     } catch(error) {
@@ -163,15 +162,15 @@ export function chatScreen() {
 // }
 
 // what to put the types as?? string and any don't work but that's what they are??
-export function getObjects(obj: object, key, val, newVal) {
-    for (var i in obj) {
-        if (!obj.hasOwnProperty(i)) continue;
-        if (i == key && obj[key] == val) {
-            obj[key] = newVal;
-        }
-    }
-    return obj
-  }
+// export function getObjects(obj: object, key, val, newVal) {
+//     for (var i in obj) {
+//         if (!obj.hasOwnProperty(i)) continue;
+//         if (i == key && obj[key] == val) {
+//             obj[key] = newVal;
+//         }
+//     }
+//     return obj
+//   }
 
 // export function updateJson(username: string, newFirstName: string){
 // for (var i = 0; i < finalUser.Users.length; i++) {

@@ -1,12 +1,12 @@
-{"Users":[
+[
   {
     "id": 1,
-    "firstName": "Jazz",
+    "firstName": "Steve",
     "lastName": "West",
     "username": "JazzW",
     "eyeColor": "Brown",
     "birthDay": "NaN/NaN/NaN",
-    "createdAt": "2022-09-05T08:53:36.516Z",
+    "createdAt": "2022-09-08T11:36:06.793Z",
     "profile_photo_id": 1,
     "background_photo_id": 1
   },
@@ -17,7 +17,7 @@
     "username": "DiegoW",
     "eyeColor": "Brown",
     "birthDay": "NaN/NaN/NaN",
-    "createdAt": "2022-09-05T08:53:36.516Z",
+    "createdAt": "2022-09-08T11:36:06.793Z",
     "profile_photo_id": 2,
     "background_photo_id": 2
   },
@@ -27,9 +27,9 @@
     "lastName": "Denny",
     "username": "SkyeD",
     "eyeColor": "Blue",
-    "birthDay": "24/3/2001",
-    "createdAt": "2022-09-05T08:53:36.516Z",
+    "birthDay": "NaN/NaN/NaN",
+    "createdAt": "2022-09-08T11:36:06.793Z",
     "profile_photo_id": 3,
     "background_photo_id": 3
   }
-]}
+]
